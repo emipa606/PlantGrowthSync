@@ -1,0 +1,4 @@
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\PlantGrowthSync\Assemblies\PlantGrowthSync.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\PlantGrowthSync\Source\PlantGrowthSync\obj\Debug\PlantGrowthSync.csprojAssemblyReference.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\PlantGrowthSync\Source\PlantGrowthSync\obj\Debug\PlantGrowthSync.csproj.CoreCompileInputs.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\PlantGrowthSync\Source\PlantGrowthSync\obj\Debug\PlantGrowthSync.dll
