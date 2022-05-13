@@ -1,101 +1,120 @@
-﻿using RimWorld;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using RimWorld;
 using Verse;
 
 
 // Thank you to Lanilor for writing the basis of this file!
 
 
-namespace PlantGrowthSync
+namespace PlantGrowthSync;
+
+public class MapComponent_GrowthSync : MapComponent
 {
-  public class MapComponent_GrowthSync : MapComponent
-  {
     public TickManager tickMan;
 
     public MapComponent_GrowthSync(Map map) : base(map)
     {
-    
     }
 
     public override void FinalizeInit()
     {
-      tickMan = Find.TickManager;
+        tickMan = Find.TickManager;
 
-      base.FinalizeInit();
+        base.FinalizeInit();
     }
 
     public override void MapComponentTick()
     {
-      if (tickMan.TicksGame % PGSModSettings.TimeBetweenChecks != 0) // 60 ticks = 1 second
-        return;
-
-      foreach (Zone allZone in map.zoneManager.AllZones)
-      {
-        if (allZone.GetType() == typeof(Zone_Growing))
+        if (tickMan.TicksGame % PGSModSettings.TimeBetweenChecks != 0) // 60 ticks = 1 second
         {
-          Zone_Growing zoneGrowing = (Zone_Growing)allZone;
-          float growRate = (float)(PGSModSettings.SyncRatePerFullGrowth / (zoneGrowing.GetPlantDefToGrow().plant.growDays * 30.0));
-          IEnumerable<Thing> allContainedThings = zoneGrowing.AllContainedThings;
-          List<Plant> plantList = new List<Plant>();
-          float totalPlantGrowth = 0.0f;
+            return;
+        }
 
-          foreach (Thing thing in allContainedThings)
-          {
-            if (thing.GetType() == typeof(Plant))
+        foreach (var allZone in map.zoneManager.AllZones)
+        {
+            if (allZone.GetType() != typeof(Zone_Growing))
             {
-              Plant plant = (Plant)thing;
-              if (plant.IsCrop && plant.LifeStage == PlantLifeStage.Growing)
-              {
+                continue;
+            }
+
+            var zoneGrowing = (Zone_Growing)allZone;
+            var growRate = (float)(PGSModSettings.SyncRatePerFullGrowth /
+                                   (zoneGrowing.GetPlantDefToGrow().plant.growDays * 30.0));
+            var allContainedThings = zoneGrowing.AllContainedThings;
+            var plantList = new List<Plant>();
+            var totalPlantGrowth = 0.0f;
+
+            foreach (var thing in allContainedThings)
+            {
+                if (thing.GetType() != typeof(Plant))
+                {
+                    continue;
+                }
+
+                var plant = (Plant)thing;
+                if (!plant.IsCrop || plant.LifeStage != PlantLifeStage.Growing)
+                {
+                    continue;
+                }
+
                 totalPlantGrowth += plant.Growth;
                 plantList.Add(plant);
-              }
             }
-          }
 
-          float averagePlantGrowth = totalPlantGrowth / plantList.Count;
-          int underAveragePlants = 0;
-          int overAveragePlants = 0;
+            var averagePlantGrowth = totalPlantGrowth / plantList.Count;
+            var underAveragePlants = 0;
+            var overAveragePlants = 0;
 
-          for (int index = plantList.Count - 1; index >= 0; --index)
-          {
-            if (Math.Abs(averagePlantGrowth - plantList[index].Growth) <= (double)growRate)
+            for (var index = plantList.Count - 1; index >= 0; --index)
             {
-              plantList[index].Growth = averagePlantGrowth;
-              plantList.RemoveAt(index);
+                if (Math.Abs(averagePlantGrowth - plantList[index].Growth) <= (double)growRate)
+                {
+                    plantList[index].Growth = averagePlantGrowth;
+                    plantList.RemoveAt(index);
+                }
+                else
+                {
+                    if (plantList[index].Growth < averagePlantGrowth)
+                    {
+                        ++underAveragePlants;
+                    }
+
+                    if (plantList[index].Growth > averagePlantGrowth)
+                    {
+                        ++overAveragePlants;
+                    }
+                }
             }
-            else
+
+            var moreUnderThanOver = 1f;
+            var moreOverThanUnder = 1f;
+
+            if (underAveragePlants > 0 && overAveragePlants > 0)
             {
-              if (plantList[index].Growth < averagePlantGrowth)
-                ++underAveragePlants;
+                if (underAveragePlants > overAveragePlants)
+                {
+                    moreUnderThanOver = (float)overAveragePlants / underAveragePlants;
+                }
 
-              if (plantList[index].Growth > averagePlantGrowth)
-                ++overAveragePlants;
+                else
+                {
+                    moreOverThanUnder = (float)underAveragePlants / overAveragePlants;
+                }
             }
-          }
 
-          float moreUnderThanOver = 1f;
-          float moreOverThanUnder = 1f;
+            foreach (var plant in plantList)
+            {
+                if (plant.Growth < averagePlantGrowth)
+                {
+                    plant.Growth += growRate * moreUnderThanOver;
+                }
 
-          if (underAveragePlants > 0 && overAveragePlants > 0)
-          {
-            if (underAveragePlants > overAveragePlants)
-              moreUnderThanOver = overAveragePlants / underAveragePlants;
-
-            else
-              moreOverThanUnder = underAveragePlants / overAveragePlants;
-          }
-
-          foreach (Plant plant in plantList)
-          {
-            if (plant.Growth < averagePlantGrowth)
-              plant.Growth += growRate * moreUnderThanOver;
-
-            if (plant.Growth > averagePlantGrowth)
-              plant.Growth -= growRate * moreOverThanUnder;
-          }
+                if (plant.Growth > averagePlantGrowth)
+                {
+                    plant.Growth -= growRate * moreOverThanUnder;
+                }
+            }
         }
-      }
     }
-  }
 }

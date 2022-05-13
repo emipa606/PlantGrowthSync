@@ -1,20 +1,71 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<name>Plant Growth Sync</name>
-	<author>Neceros</author>
-	<supportedVersions>
-   <li>1.1</li>
-   <li>1.2</li>
-   <li>1.3</li>
+  <name>Plant Growth Sync (Continued)</name>
+  <packageId>Mlie.PlantGrowthSync</packageId>
+  <author>Neceros</author>
+  <url>https://github.com/emipa606/PlantGrowthSync</url>
+  <supportedVersions>
+    <li>1.1</li>
+    <li>1.2</li>
+    <li>1.3</li>
   </supportedVersions>
-  <packageId>neceros.plantgrowthsync</packageId>
-	<description>
-&lt;size=20&gt;Plant Growth Sync&lt;/size&gt;
+  <modDependencies />
+  <loadAfter />
+  <description>[img]https://i.imgur.com/buuPQel.png[/img]
+Update of Neceros mod
+https://steamcommunity.com/sharedfiles/filedetails/?id=2084148729
 
-Originally by Lanilor. Updated by Neceros
+[img]https://i.imgur.com/pufA0kM.png[/img]
 
-This mod adds synchronization of plant groth in growing zones. So it equals little differences when a colonist only sows one part of a zone and then takes a break before finishing the rest or if single plants were eaten by an animal. The growth sync equals this slowly over time so that the whole zone can be harvested at the same time. (Or with larger differences after a few harvests.)
+[table]
+    [tr]
+        [td][url=https://invite.gg/Mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
+        [td][url=https://github.com/emipa606/PlantGrowthSync][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
+    [/tr]
+[/table]
+	
+[img]https://i.imgur.com/Z4GOv8H.png[/img]
+Synchronize your crop fields over time, so as to eventually force them to mature at the same time. Growth sync only applies to crops in your growing zones.
 
-Growth sync only affects crops in your growing zones.
-	</description>
+Includes a mod settings menu to customize your experience.
+
+
+[b]Sorry, but I'm no longer maintaining my mods. Maybe in the future[/b]
+[i]Please note 99% of my mods are MIT licensed, meaning you can do whatever you want with it with the requirement of crediting me.[/i]
+
+
+[b]Plant growth amount:[/b] Indicates how much each plant is averaged amongst each other. The larger this is the more each plant is sync per each time.
+[b]Growth sync time:[/b] Change how often the game tries to sync plants. 
+
+
+[img]https://i.imgur.com/ldroDjl.png[/img]
+
+Originally by [b]Lanilor[/b]. Updated by [b]Neceros[/b]
+
+
+[img]https://i.imgur.com/2Zpv4mk.png[/img]
+
+[img]https://i.imgur.com/NpuFU7v.png[/img]
+
+[b]Github:[/b] https://github.com/Neceros/PlantGrowthSync
+
+[img]https://i.imgur.com/s3KRLlu.gif[/img]
+
+[b]Get help, Ask questions, Give suggestions:[/b]
+[url=https://discord.gg/AvV7DT5][img]https://i.imgur.com/lkEpF5w.png[/img][/url]
+
+[b]My mods:[/b]
+[url=https://steamcommunity.com/id/TheBigN/myworkshopfiles/?appid=294100&amp;amp;p=1&amp;amp;numperpage=30][img]https://i.imgur.com/MD0xY84.png[/img][/url]
+
+[i][b]GNU LESSER GENERAL PUBLIC LICENSE[/b] Version 3, 29 June 2007[/i]
+
+[img]https://i.imgur.com/PwoNOj4.png[/img]
+[list]
+[*] See if the the error persists if you just have this mod and its requirements active.
+[*] If not, try adding your other mods until it happens again.
+[*] Post your error-log using [url=https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib[/url] and command Ctrl+F12
+[*] For best support, please use the Discord-channel for error-reporting.
+[*] Do not report errors by making a discussion-thread, I get no notification of that.
+[*] If you have the solution for a problem, please post it to the GitHub repository.
+[/list]</description>
 </ModMetaData>

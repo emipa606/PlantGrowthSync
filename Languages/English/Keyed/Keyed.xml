@@ -1,12 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	
-	<PGSHeader>Plant Growth Settings</PGSHeader>
+  <PGSHeader>Plant Growth Settings</PGSHeader>
   <ModTitle>Plant Growth Sync</ModTitle>
-
   <SecondsExplain>seconds</SecondsExplain>
   <Speed3Explain>seconds at x3 speed</Speed3Explain>
   <TimeBetweenChecks>Number of real seconds between syncs</TimeBetweenChecks>
   <SyncRatePerFullGrowth>Growth amount to sync every cycle</SyncRatePerFullGrowth>
-	
 </LanguageData>
