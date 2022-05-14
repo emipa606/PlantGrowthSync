@@ -53,7 +53,7 @@ public class MapComponent_GrowthSync : MapComponent
                 }
 
                 var plant = (Plant)thing;
-                if (!plant.IsCrop || plant.LifeStage != PlantLifeStage.Growing)
+                if (!plant.IsCrop || plant.LifeStage != PlantLifeStage.Growing || plant.GrowthRate <= 0)
                 {
                     continue;
                 }
