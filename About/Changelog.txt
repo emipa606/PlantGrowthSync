@@ -1,5 +1,8 @@
 # Changelog for PlantGrowthSync
 
+1.3.3 - Should no longer cause plants to get negative growth making them invisible and without progress.
+
+
 1.3.2 - Fixed settings window. Also only plants with an active growth-rate should try to sync
 
 

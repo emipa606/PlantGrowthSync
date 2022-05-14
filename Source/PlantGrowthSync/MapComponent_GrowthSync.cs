@@ -110,7 +110,16 @@ public class MapComponent_GrowthSync : MapComponent
                     plant.Growth += growRate * moreUnderThanOver;
                 }
 
-                if (plant.Growth > averagePlantGrowth)
+                if (!(plant.Growth > averagePlantGrowth))
+                {
+                    continue;
+                }
+
+                if (plant.Growth - (growRate * moreOverThanUnder) < averagePlantGrowth)
+                {
+                    plant.Growth = averagePlantGrowth;
+                }
+                else
                 {
                     plant.Growth -= growRate * moreOverThanUnder;
                 }
