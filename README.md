@@ -5,6 +5,8 @@
 Update of Neceros mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2084148729
 
+- Fixed the Invisible plants issue
+
 ![Image](https://i.imgur.com/pufA0kM.png)
 
 	

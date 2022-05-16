@@ -1,5 +1,8 @@
 # Changelog for PlantGrowthSync
 
+1.3.4 - Should really fix the invisible plants, hopefully
+
+
 1.3.3 - Should no longer cause plants to get negative growth making them invisible and without progress.
 
 

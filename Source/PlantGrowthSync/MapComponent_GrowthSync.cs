@@ -62,7 +62,7 @@ public class MapComponent_GrowthSync : MapComponent
                 plantList.Add(plant);
             }
 
-            var averagePlantGrowth = totalPlantGrowth / plantList.Count;
+            var averagePlantGrowth = (float)Math.Round(totalPlantGrowth / plantList.Count, 4);
             var underAveragePlants = 0;
             var overAveragePlants = 0;
 
