@@ -102,23 +102,23 @@ public static class DialogSettings
             }
         }
 
-        if (roundNumber == RoundFloat.Tenth)
+        switch (roundNumber)
         {
-            value = Widgets.HorizontalSlider(rect, RoundToNearestTenth(value), min, max, false, null, label,
-                labelValue);
-        }
-        else if (roundNumber == RoundFloat.Half)
-        {
-            value = Widgets.HorizontalSlider(rect, RoundToNearestHalf(value), min, max, false, null, label, labelValue);
-        }
-        else if (roundNumber == RoundFloat.Hundredth)
-        {
-            value = Widgets.HorizontalSlider(rect, RoundToNearestHundredth(value), min, max, false, null, label,
-                labelValue);
-        }
-        else if (roundNumber == RoundFloat.None)
-        {
-            value = Widgets.HorizontalSlider(rect, value, min, max, false, null, label, labelValue);
+            case RoundFloat.Tenth:
+                value = Widgets.HorizontalSlider(rect, RoundToNearestTenth(value), min, max, false, null, label,
+                    labelValue);
+                break;
+            case RoundFloat.Half:
+                value = Widgets.HorizontalSlider(rect, RoundToNearestHalf(value), min, max, false, null, label,
+                    labelValue);
+                break;
+            case RoundFloat.Hundredth:
+                value = Widgets.HorizontalSlider(rect, RoundToNearestHundredth(value), min, max, false, null, label,
+                    labelValue);
+                break;
+            case RoundFloat.None:
+                value = Widgets.HorizontalSlider(rect, value, min, max, false, null, label, labelValue);
+                break;
         }
 
         if (hardMaximum > 0 && value >= max)
@@ -145,24 +145,24 @@ public static class DialogSettings
 
         value = (int)Widgets.HorizontalSlider(rect, value, min, max, false, null, label, labelValue);
 
-        if (roundNumber == RoundFloat.Tenth)
+        switch (roundNumber)
         {
-            value = (int)Widgets.HorizontalSlider(rect, RoundToNearestTenth(value), min, max, false, null, label,
-                labelValue);
-        }
-        else if (roundNumber == RoundFloat.Half)
-        {
-            value = (int)Widgets.HorizontalSlider(rect, RoundToNearestHalf(value), min, max, false, null, label,
-                labelValue);
-        }
-        else if (roundNumber == RoundFloat.Hundredth)
-        {
-            value = (int)Widgets.HorizontalSlider(rect, RoundToNearestHundredth(value), min, max, false, null, label,
-                labelValue);
-        }
-        else if (roundNumber == RoundFloat.None)
-        {
-            value = (int)Widgets.HorizontalSlider(rect, value, min, max, false, null, label, labelValue);
+            case RoundFloat.Tenth:
+                value = (int)Widgets.HorizontalSlider(rect, RoundToNearestTenth(value), min, max, false, null, label,
+                    labelValue);
+                break;
+            case RoundFloat.Half:
+                value = (int)Widgets.HorizontalSlider(rect, RoundToNearestHalf(value), min, max, false, null, label,
+                    labelValue);
+                break;
+            case RoundFloat.Hundredth:
+                value = (int)Widgets.HorizontalSlider(rect, RoundToNearestHundredth(value), min, max, false, null,
+                    label,
+                    labelValue);
+                break;
+            case RoundFloat.None:
+                value = (int)Widgets.HorizontalSlider(rect, value, min, max, false, null, label, labelValue);
+                break;
         }
 
         if (hardMaximum > 0 && value == max)

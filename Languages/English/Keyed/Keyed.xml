@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
+  <GrowthSyncCurrentModVersion>Installed mod-version: {0}</GrowthSyncCurrentModVersion>
   <PGSHeader>Plant Growth Settings</PGSHeader>
   <ModTitle>Plant Growth Sync</ModTitle>
   <SecondsExplain>seconds</SecondsExplain>

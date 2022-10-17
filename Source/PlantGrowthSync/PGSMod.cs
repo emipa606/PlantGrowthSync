@@ -1,4 +1,5 @@
 ﻿using System;
+using Mlie;
 using UnityEngine;
 using Verse;
 
@@ -6,12 +7,15 @@ namespace PlantGrowthSync;
 
 public class PGSMod : Mod
 {
+    private static string currentVersion;
     public Vector2 scrollPosition;
     private PGSModSettings settings;
 
     public PGSMod(ModContentPack con) : base(con)
     {
         settings = GetSettings<PGSModSettings>();
+        currentVersion =
+            VersionFromManifest.GetVersionFromModMetaData(ModLister.GetActiveModWithIdentifier("Mlie.PlantGrowthSync"));
     }
 
     public override void DoSettingsWindowContents(Rect canvas)
@@ -19,7 +23,6 @@ public class PGSMod : Mod
         var lister = new Listing_Standard();
 
         lister.Begin(canvas);
-        lister.Settings_Header("PGSHeader".Translate(), Color.clear);
         lister.GapLine();
         lister.Gap();
 
@@ -33,6 +36,14 @@ public class PGSMod : Mod
             ref PGSModSettings.SyncRatePerFullGrowth, 0f, 0.5f, roundNumber: RoundFloat.Hundredth);
         lister.Settings_SliderLabeled(timeChecks, string.Empty, ref PGSModSettings.TimeBetweenChecks, 600, 3600,
             roundNumber: RoundFloat.Tenth);
+        if (currentVersion != null)
+        {
+            lister.Gap();
+            GUI.contentColor = Color.gray;
+            lister.Label("GrowthSyncCurrentModVersion".Translate(currentVersion));
+            GUI.contentColor = Color.white;
+        }
+
         lister.End();
 
         base.DoSettingsWindowContents(canvas);
@@ -57,7 +68,7 @@ public class PGSMod : Mod
         }
 
 
-        return label + ": " + preLabel + Math.Floor(number * multiplier) + postLabel;
+        return $"{label}: {preLabel}{Math.Floor(number * multiplier)}{postLabel}";
     }
 
     public string AddToLabel(string label, float number, float multiplier = -1f, float divideBy = -1f,
@@ -75,14 +86,11 @@ public class PGSMod : Mod
 
         if (multiplier > 0f)
         {
-            return label + ": " + preLabel + (number * multiplier) + postLabel;
+            return $"{label}: {preLabel}{number * multiplier}{postLabel}";
         }
 
-        if (divideBy > 0f)
-        {
-            return label + ": " + preLabel + (number / divideBy) + postLabel;
-        }
-
-        return label + ": " + preLabel + number + postLabel;
+        return divideBy > 0f
+            ? $"{label}: {preLabel}{number / divideBy}{postLabel}"
+            : $"{label}: {preLabel}{number}{postLabel}";
     }
 }
