@@ -15,7 +15,7 @@ public class PGSMod : Mod
     {
         settings = GetSettings<PGSModSettings>();
         currentVersion =
-            VersionFromManifest.GetVersionFromModMetaData(ModLister.GetActiveModWithIdentifier("Mlie.PlantGrowthSync"));
+            VersionFromManifest.GetVersionFromModMetaData(con.ModMetaData);
     }
 
     public override void DoSettingsWindowContents(Rect canvas)

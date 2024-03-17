@@ -9,13 +9,9 @@ using Verse;
 
 namespace PlantGrowthSync;
 
-public class MapComponent_GrowthSync : MapComponent
+public class MapComponent_GrowthSync(Map map) : MapComponent(map)
 {
     public TickManager tickMan;
-
-    public MapComponent_GrowthSync(Map map) : base(map)
-    {
-    }
 
     public override void FinalizeInit()
     {

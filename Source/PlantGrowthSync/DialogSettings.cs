@@ -94,7 +94,7 @@ public static class DialogSettings
         }
 
         if (!valueDisplayWhenMax.NullOrEmpty() &&
-            hardMaximum > 0) // when value is max, show a string instead (infinite, max, etc)
+            hardMaximum > 0) // when value is max, show a string instead (infinite, max, etc.)
         {
             if (value >= hardMaximum)
             {
@@ -133,9 +133,9 @@ public static class DialogSettings
     {
         lister.Gap();
         var rect = lister.GetRect(24f);
-        var labelValue = string.Format("{0}" + endSymbol, value);
+        var labelValue = $"{value}{endSymbol}";
         if (!valueDisplayWhenMax.NullOrEmpty() &&
-            hardMaximum > 0) // when value is max, show a string instead (infinite, max, etc)
+            hardMaximum > 0) // when value is max, show a string instead (infinite, max, etc.)
         {
             if (value == hardMaximum)
             {
@@ -236,7 +236,7 @@ public static class DialogSettings
     }
 
     public static bool Settings_ButtonLabeled(this Listing_Standard lister, string header, string buttonLabel,
-        Color highlightColor, float buttonWidth = 30f, bool background = true, bool active = true)
+        Color highlight, float buttonWidth = 30f, bool background = true, bool active = true)
     {
         var anchor = Text.Anchor;
         var color = GUI.color;
@@ -265,7 +265,7 @@ public static class DialogSettings
             GUI.color = Color.white;
             if (Mouse.IsOver(buttonRect))
             {
-                GUI.color = highlightColor;
+                GUI.color = highlight;
             }
         }
 
@@ -285,14 +285,14 @@ public static class DialogSettings
         return Widgets.ButtonInvisible(buttonRect, false);
     }
 
-    public static void Draw_Label(Rect rect, string label, Color highlight, Color textColor,
+    public static void Draw_Label(Rect rect, string label, Color highlight, Color textColorValue,
         GameFont fontSize = GameFont.Medium, TextAnchor anchor = TextAnchor.MiddleLeft)
     {
         var textSize = Text.Font;
         Text.Font = fontSize;
         GUI.color = highlight;
         GUI.DrawTexture(rect, BaseContent.WhiteTex);
-        GUI.color = textColor;
+        GUI.color = textColorValue;
 
         var anchorTmp = Text.Anchor;
         Text.Anchor = anchor;
