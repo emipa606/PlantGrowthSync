@@ -8,12 +8,10 @@ namespace PlantGrowthSync;
 public class PGSMod : Mod
 {
     private static string currentVersion;
-    public Vector2 scrollPosition;
-    private PGSModSettings settings;
 
     public PGSMod(ModContentPack con) : base(con)
     {
-        settings = GetSettings<PGSModSettings>();
+        GetSettings<PGSModSettings>();
         currentVersion =
             VersionFromManifest.GetVersionFromModMetaData(con.ModMetaData);
     }
@@ -57,32 +55,20 @@ public class PGSMod : Mod
     public string AddFlooredLabel(string label, float number, float multiplier, string preLabel = null,
         string postLabel = null)
     {
-        if (preLabel == null)
-        {
-            preLabel = "";
-        }
+        preLabel ??= "";
 
-        if (postLabel == null)
-        {
-            postLabel = "";
-        }
+        postLabel ??= "";
 
 
         return $"{label}: {preLabel}{Math.Floor(number * multiplier)}{postLabel}";
     }
 
-    public string AddToLabel(string label, float number, float multiplier = -1f, float divideBy = -1f,
+    private string AddToLabel(string label, float number, float multiplier = -1f, float divideBy = -1f,
         string preLabel = null, string postLabel = null)
     {
-        if (preLabel == null)
-        {
-            preLabel = "";
-        }
+        preLabel ??= "";
 
-        if (postLabel == null)
-        {
-            postLabel = "";
-        }
+        postLabel ??= "";
 
         if (multiplier > 0f)
         {

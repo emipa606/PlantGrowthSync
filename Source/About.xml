@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
   <name>Plant Growth Sync</name>
   <author>Neceros</author>
@@ -8,7 +8,7 @@
   </supportedVersions>
   <packageId>neceros.plantgrowthsync</packageId>
   <description>
-&lt;size=20&gt;Plant Growth Sync&lt;/size&gt;
+&lt;size=20>Plant Growth Sync&lt;/size>
 
 Originally by Lanilor. Updated by Neceros
 

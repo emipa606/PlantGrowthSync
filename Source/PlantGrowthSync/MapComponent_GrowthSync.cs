@@ -11,7 +11,7 @@ namespace PlantGrowthSync;
 
 public class MapComponent_GrowthSync(Map map) : MapComponent(map)
 {
-    public TickManager tickMan;
+    private TickManager tickMan;
 
     public override void FinalizeInit()
     {
@@ -27,23 +27,23 @@ public class MapComponent_GrowthSync(Map map) : MapComponent(map)
             return;
         }
 
-        foreach (var allZone in map.zoneManager.AllZones)
+        foreach (var zone in map.zoneManager.AllZones)
         {
-            if (allZone.GetType() != typeof(Zone_Growing))
+            if (zone.GetType().GetInterface("IPlantToGrowSettable") == null)
             {
                 continue;
             }
 
-            var zoneGrowing = (Zone_Growing)allZone;
+            var interfaceZone = (IPlantToGrowSettable)zone;
             var growRate = (float)(PGSModSettings.SyncRatePerFullGrowth /
-                                   (zoneGrowing.GetPlantDefToGrow().plant.growDays * 30.0));
-            var allContainedThings = zoneGrowing.AllContainedThings;
+                                   (interfaceZone.GetPlantDefToGrow().plant.growDays * 30.0));
+            var allContainedThings = zone.AllContainedThings;
             var plantList = new List<Plant>();
             var totalPlantGrowth = 0.0f;
 
             foreach (var thing in allContainedThings)
             {
-                if (thing.GetType() != typeof(Plant))
+                if (thing.GetType() != typeof(Plant) && !thing.GetType().IsSubclassOf(typeof(Plant)))
                 {
                     continue;
                 }

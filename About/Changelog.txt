@@ -1,5 +1,8 @@
 # Changelog for PlantGrowthSync
 
+1.5.1 - Added support for the special plants added in [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2134308522]Vanilla Plants Expanded[/url] as well as the extra growing zones in its addon-mod
+
+
 1.5.0 - Mod updated for 1.5 and passed autotests
 
 
