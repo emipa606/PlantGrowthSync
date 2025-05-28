@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 
@@ -34,21 +36,26 @@ public class MapComponent_GrowthSync(Map map) : MapComponent(map)
                 continue;
             }
 
+            var allContainedThings = zone.AllContainedThings;
+            var containedThings = allContainedThings as Thing[] ?? allContainedThings.ToArray();
+            if (!containedThings.Any())
+            {
+                continue; // Skip zones with no things
+            }
+
             var interfaceZone = (IPlantToGrowSettable)zone;
             var growRate = (float)(PGSModSettings.SyncRatePerFullGrowth /
                                    (interfaceZone.GetPlantDefToGrow().plant.growDays * 30.0));
-            var allContainedThings = zone.AllContainedThings;
             var plantList = new List<Plant>();
             var totalPlantGrowth = 0.0f;
 
-            foreach (var thing in allContainedThings)
+            foreach (var thing in containedThings)
             {
-                if (thing.GetType() != typeof(Plant) && !thing.GetType().IsSubclassOf(typeof(Plant)))
+                if (thing is not Plant plant)
                 {
                     continue;
                 }
 
-                var plant = (Plant)thing;
                 if (!plant.IsCrop || plant.LifeStage != PlantLifeStage.Growing || plant.GrowthRate <= 0)
                 {
                     continue;
@@ -58,28 +65,36 @@ public class MapComponent_GrowthSync(Map map) : MapComponent(map)
                 plantList.Add(plant);
             }
 
+            if (plantList.Count == 0)
+            {
+                continue;
+            }
+
             var averagePlantGrowth = (float)Math.Round(totalPlantGrowth / plantList.Count, 4);
             var underAveragePlants = 0;
             var overAveragePlants = 0;
 
+            plantList.RemoveAll(plant =>
+            {
+                if (!(Math.Abs(averagePlantGrowth - plant.Growth) <= growRate))
+                {
+                    return false;
+                }
+
+                plant.Growth = Mathf.Clamp(averagePlantGrowth, 0f, 1f);
+                return true;
+            });
+
             for (var index = plantList.Count - 1; index >= 0; --index)
             {
-                if (Math.Abs(averagePlantGrowth - plantList[index].Growth) <= (double)growRate)
+                if (plantList[index].Growth < averagePlantGrowth)
                 {
-                    plantList[index].Growth = averagePlantGrowth;
-                    plantList.RemoveAt(index);
+                    ++underAveragePlants;
                 }
-                else
-                {
-                    if (plantList[index].Growth < averagePlantGrowth)
-                    {
-                        ++underAveragePlants;
-                    }
 
-                    if (plantList[index].Growth > averagePlantGrowth)
-                    {
-                        ++overAveragePlants;
-                    }
+                if (plantList[index].Growth > averagePlantGrowth)
+                {
+                    ++overAveragePlants;
                 }
             }
 
@@ -119,6 +134,8 @@ public class MapComponent_GrowthSync(Map map) : MapComponent(map)
                 {
                     plant.Growth -= growRate * moreOverThanUnder;
                 }
+
+                plant.Growth = Mathf.Clamp(plant.Growth, 0f, 1f);
             }
         }
     }
