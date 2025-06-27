@@ -6,17 +6,17 @@ namespace PlantGrowthSync;
 [StaticConstructorOnStartup]
 public static class DialogSettings
 {
-    private static float RoundToNearestHalf(float val)
+    private static float roundToNearestHalf(float val)
     {
         return (float)Math.Round(val * 2, MidpointRounding.AwayFromZero) / 2;
     }
 
-    private static float RoundToNearestTenth(float val)
+    private static float roundToNearestTenth(float val)
     {
         return (float)Math.Round(val * 10, MidpointRounding.AwayFromZero) / 10;
     }
 
-    private static float RoundToNearestHundredth(float val)
+    private static float roundToNearestHundredth(float val)
     {
         return (float)Math.Round(val * 100, MidpointRounding.AwayFromZero) / 100;
     }
@@ -47,15 +47,15 @@ public static class DialogSettings
         switch (roundNumber)
         {
             case RoundFloat.Tenth:
-                value = Widgets.HorizontalSlider(rect, RoundToNearestTenth(value), min, max, false, null, label,
+                value = Widgets.HorizontalSlider(rect, roundToNearestTenth(value), min, max, false, null, label,
                     labelValue);
                 break;
             case RoundFloat.Half:
-                value = Widgets.HorizontalSlider(rect, RoundToNearestHalf(value), min, max, false, null, label,
+                value = Widgets.HorizontalSlider(rect, roundToNearestHalf(value), min, max, false, null, label,
                     labelValue);
                 break;
             case RoundFloat.Hundredth:
-                value = Widgets.HorizontalSlider(rect, RoundToNearestHundredth(value), min, max, false, null, label,
+                value = Widgets.HorizontalSlider(rect, roundToNearestHundredth(value), min, max, false, null, label,
                     labelValue);
                 break;
             case RoundFloat.None:
@@ -90,15 +90,15 @@ public static class DialogSettings
         switch (roundNumber)
         {
             case RoundFloat.Tenth:
-                value = (int)Widgets.HorizontalSlider(rect, RoundToNearestTenth(value), min, max, false, null, label,
+                value = (int)Widgets.HorizontalSlider(rect, roundToNearestTenth(value), min, max, false, null, label,
                     labelValue);
                 break;
             case RoundFloat.Half:
-                value = (int)Widgets.HorizontalSlider(rect, RoundToNearestHalf(value), min, max, false, null, label,
+                value = (int)Widgets.HorizontalSlider(rect, roundToNearestHalf(value), min, max, false, null, label,
                     labelValue);
                 break;
             case RoundFloat.Hundredth:
-                value = (int)Widgets.HorizontalSlider(rect, RoundToNearestHundredth(value), min, max, false, null,
+                value = (int)Widgets.HorizontalSlider(rect, roundToNearestHundredth(value), min, max, false, null,
                     label,
                     labelValue);
                 break;

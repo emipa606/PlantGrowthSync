@@ -1,5 +1,4 @@
-﻿using System;
-using Mlie;
+﻿using Mlie;
 using UnityEngine;
 using Verse;
 
@@ -27,7 +26,7 @@ public class PGSMod : Mod
         string dayExplain = " " + "SecondsExplain".Translate() + " (" +
                             (PGSModSettings.TimeBetweenChecks / 60 / 15).ToString() + " " +
                             "Speed3Explain".Translate() + ")";
-        var timeChecks = AddToLabel("TimeBetweenChecks".Translate(), PGSModSettings.TimeBetweenChecks, divideBy: 60,
+        var timeChecks = addToLabel("TimeBetweenChecks".Translate(), PGSModSettings.TimeBetweenChecks, divideBy: 60,
             postLabel: dayExplain);
         lister.Settings_SliderLabeled(
             "SyncRatePerFullGrowth".Translate(), "%",
@@ -52,18 +51,7 @@ public class PGSMod : Mod
         return "ModTitle".Translate();
     }
 
-    public string AddFlooredLabel(string label, float number, float multiplier, string preLabel = null,
-        string postLabel = null)
-    {
-        preLabel ??= "";
-
-        postLabel ??= "";
-
-
-        return $"{label}: {preLabel}{Math.Floor(number * multiplier)}{postLabel}";
-    }
-
-    private string AddToLabel(string label, float number, float multiplier = -1f, float divideBy = -1f,
+    private static string addToLabel(string label, float number, float multiplier = -1f, float divideBy = -1f,
         string preLabel = null, string postLabel = null)
     {
         preLabel ??= "";
