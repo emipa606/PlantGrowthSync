@@ -13,18 +13,9 @@ namespace PlantGrowthSync;
 
 public class MapComponent_GrowthSync(Map map) : MapComponent(map)
 {
-    private TickManager tickMan;
-
-    public override void FinalizeInit()
-    {
-        tickMan = Find.TickManager;
-
-        base.FinalizeInit();
-    }
-
     public override void MapComponentTick()
     {
-        if (tickMan.TicksGame % PGSModSettings.TimeBetweenChecks != 0) // 60 ticks = 1 second
+        if (Find.TickManager.TicksGame % PGSModSettings.TimeBetweenChecks != 0) // 60 ticks = 1 second
         {
             return;
         }
