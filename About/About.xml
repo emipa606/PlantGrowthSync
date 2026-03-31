@@ -14,26 +14,26 @@
   </supportedVersions>
   <modDependencies />
   <loadAfter />
-  <description>[img]https://i.imgur.com/buuPQel.png[/img]
+  <description>[img]https://img.litet.net/logos/Info.png[/img]
 Update of Neceros mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2084148729
 
 - Fixed the Invisible plants issue
 
-[img]https://i.imgur.com/pufA0kM.png[/img]
+[img]https://img.litet.net/logos/Notice.png[/img]
 
 [table]
     [tr]
-        [td][url=https://dsc.gg/mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
-        [td][url=https://github.com/emipa606/PlantGrowthSync][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
+        [td][url=https://discord.gg/h5TY6DA][img]https://img.litet.net/logos/Discord.png[/img][/url][/td]
+        [td][url=https://github.com/emipa606/PlantGrowthSync][img]https://img.litet.net/logos/Github.png[/img][/url][/td]
     [/tr]
     [tr]
-        [td][img]https://i.imgur.com/WjDSfUn.png[/img][/td]
-        [td][img]https://i.imgur.com/h5VwTNL.png[/img][/td]
+        [td][img]https://img.litet.net/logos/SafeToAdd.png[/img][/td]
+        [td][img]https://img.litet.net/logos/SafeToRemove.png[/img][/td]
     [/tr]
 [/table]
 	
-[img]https://i.imgur.com/Z4GOv8H.png[/img]
+[img]https://img.litet.net/logos/OriginalDescription.png[/img]
 Synchronize your crop fields over time, so as to eventually force them to mature at the same time. Growth sync only applies to crops in your growing zones.
 
 Includes a mod settings menu to customize your experience.
@@ -47,38 +47,38 @@ Includes a mod settings menu to customize your experience.
 [b]Growth sync time:[/b] Change how often the game tries to sync plants. 
 
 
-[img]https://i.imgur.com/ldroDjl.png[/img]
+[img]https://img.litet.net/ldroDjl.png[/img]
 
 Originally by [b]Lanilor[/b]. Updated by [b]Neceros[/b]
 
 
-[img]https://i.imgur.com/2Zpv4mk.png[/img]
+[img]https://img.litet.net/2Zpv4mk.png[/img]
 
-[img]https://i.imgur.com/NpuFU7v.png[/img]
+[img]https://img.litet.net/NpuFU7v.png[/img]
 
 [b]Github:[/b] https://github.com/Neceros/PlantGrowthSync
 
-[img]https://i.imgur.com/s3KRLlu.gif[/img]
+[img]https://img.litet.net/logos/ImageNotFound.png[/img]
 
 [b]Get help, Ask questions, Give suggestions:[/b]
-[url=https://discord.gg/AvV7DT5][img]https://i.imgur.com/lkEpF5w.png[/img][/url]
+[url=https://discord.gg/AvV7DT5][img]https://img.litet.net/lkEpF5w.png[/img][/url]
 
 [b]My mods:[/b]
-[url=https://steamcommunity.com/id/TheBigN/myworkshopfiles/?appid=294100&amp;amp;p=1&amp;amp;numperpage=30][img]https://i.imgur.com/MD0xY84.png[/img][/url]
+[url=https://steamcommunity.com/id/TheBigN/myworkshopfiles/?appid=294100&amp;amp;p=1&amp;amp;numperpage=30][img]https://img.litet.net/MD0xY84.png[/img][/url]
 
 [i][b]GNU LESSER GENERAL PUBLIC LICENSE[/b] Version 3, 29 June 2007[/i]
 
-[img]https://i.imgur.com/PwoNOj4.png[/img]
+[img]https://img.litet.net/logos/ReportingIssues.png[/img]
 [list]
 [*] See if the the error persists if you just have this mod and its requirements active.
 [*] If not, try adding your other mods until it happens again.
-[*] Post your error-log using [url=https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib[/url] or the standalone [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Uploader[/url] and command Ctrl+F12
+[*] Always post your log using the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Log Uploader[/url]
 [*] For best support, please use the Discord-channel for error-reporting.
 [*] Do not report errors by making a discussion-thread, I get no notification of that.
 [*] If you have the solution for a problem, please post it to the GitHub repository.
 [*] Use [url=https://github.com/RimSort/RimSort/releases/latest]RimSort[/url] to sort your mods
 [/list] 
 
-[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2807616911][img]https://img.shields.io/github/v/release/emipa606/PlantGrowthSync?label=latest%20version&amp;style=plastic&amp;color=9f1111&amp;labelColor=black[/img][/url] | tags:  growth control</description>
-  <modVersion IgnoreIfNoMatchingField="True">1.6.0</modVersion>
+[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2807616911][img]https://img.shields.io/github/v/release/emipa606/PlantGrowthSync?label=latest%20version&amp;style=plastic&amp;color=9f1111&amp;labelColor=black[/img][/url] | tags: growth control</description>
+  <modVersion IgnoreIfNoMatchingField="True">1.6.1</modVersion>
 </ModMetaData>
